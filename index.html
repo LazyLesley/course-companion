@@ -313,7 +313,18 @@ table.word-table{width:100%;border-collapse:collapse;font-size:14px;}
   .unit-btn .zh{display:none;}
   .topbar-in{padding:0 18px;height:auto;min-height:58px;flex-wrap:wrap;gap:8px;padding-top:8px;padding-bottom:8px;}
   .top-meta{display:none;}
-  .module-tabs{grid-template-columns:1fr;}
+  .module-tabs{
+    display:flex;gap:8px;overflow-x:auto;
+    position:sticky;top:var(--topbar-h,58px);z-index:40;
+    background:var(--paper-3);padding:9px 14px;margin:0 -18px 16px;
+    border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;
+  }
+  .module-tabs::-webkit-scrollbar{display:none;}
+  .mod-tab{flex:0 0 auto;min-width:82px;text-align:center;border-left-width:1px;border-radius:6px;padding:8px 12px;}
+  .mod-tab .t{font-size:14px;}
+  .mod-tab .no{margin-bottom:2px;}
+  .mod-tab .d{display:none;}
   .two-col,.quiz-opts{grid-template-columns:1fr;}
   .placeholder .frame{grid-template-columns:1fr;}
   .unit-head{padding:22px;}
@@ -2616,6 +2627,7 @@ function render(){
   document.getElementById('main').innerHTML =
     renderHead(unit, mod, has) + renderTabs() + body + renderPager();
   if(has && mod.id==='reading') startQuiz(quiz ? quiz.mode : 'meaning');
+  syncTopbarH(); scrollToModuleBar();
 }
 function checkGaps(group){
   const ans = GAP_ANSWERS[group];
@@ -2676,6 +2688,20 @@ function answerPassage(qi, oi, btn){
   if(!P('reading').q.includes(qi)){ P('reading').q.push(qi); saveProg(); }
   refreshRefs('reading');
 }
+function syncTopbarH(){
+  const tb=document.querySelector('.topbar');
+  if(tb) document.documentElement.style.setProperty('--topbar-h', tb.offsetHeight+'px');
+}
+function scrollToModuleBar(){
+  const bar=document.querySelector('.module-tabs');
+  if(!bar) return;
+  const h=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--topbar-h'))||58;
+  const y=bar.getBoundingClientRect().top + window.scrollY - h - 4;
+  window.scrollTo({top:Math.max(0,y), behavior:'smooth'});
+}
+window.addEventListener('resize', syncTopbarH);
+window.addEventListener('load', syncTopbarH);
+syncTopbarH();
 document.addEventListener('click', e=>{
   const el = e.target.closest('[data-act]');
   if(!el) return;
