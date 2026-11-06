@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>英语第二课堂 · 活动资源｜课本阅览室</title>
+<style>
+:root{
+  --paper:#EFE7D4; --paper-2:#F6F0E3; --paper-3:#E5DAC3;
+  --ink:#2A2521; --ink-2:#5C5349; --ink-3:#8A7F71;
+  --red:#A2382C; --red-soft:rgba(162,56,44,.12);
+  --gold:#B08A3E; --green:#4E6B4A;
+  --line:rgba(42,37,33,.16); --line-2:rgba(42,37,33,.28);
+  --shadow:0 1px 2px rgba(42,37,33,.08), 0 8px 24px -14px rgba(42,37,33,.28);
+  --shadow-lift:0 2px 4px rgba(42,37,33,.10), 0 16px 36px -18px rgba(42,37,33,.34);
+  --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC","SimSun",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --mono:"SF Mono","Menlo","Consolas",monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
+  background-image:radial-gradient(rgba(42,37,33,.045) 1px,transparent 1px);
+  background-size:5px 5px;
+}
+a{color:inherit;text-decoration:none}
+
+/* ===== 顶栏（与课本阅览室保持一致） ===== */
+.topbar{position:sticky;top:0;z-index:60;background:rgba(239,231,212,.94);backdrop-filter:blur(10px) saturate(1.2);border-bottom:1px solid var(--line-2)}
+.topbar-in{max-width:1180px;margin:0 auto;padding:0 28px;height:62px;display:flex;align-items:center;gap:18px}
+.brand{font-weight:700;font-size:17px;letter-spacing:.14em;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.brand .seal{width:27px;height:27px;border:1.6px solid var(--red);color:var(--red);display:grid;place-items:center;font-size:12px;border-radius:3px;transform:rotate(-4deg)}
+.brand small{font-family:var(--sans);font-size:10px;letter-spacing:.22em;color:var(--ink-3);display:block;margin-top:-3px}
+.back{margin-left:auto;font-family:var(--sans);font-size:12px;letter-spacing:.06em;color:var(--red);border:1px solid var(--line-2);border-radius:2px;padding:7px 13px;background:var(--paper-2);white-space:nowrap;transition:.2s}
+.back:hover{background:var(--red);color:var(--paper-2);border-color:var(--red)}
+
+/* ===== 主体 ===== */
+.wrap{max-width:1180px;margin:0 auto;padding:52px 28px 70px}
+.eyebrow{font-family:var(--sans);font-size:10.5px;letter-spacing:.34em;color:var(--ink-3);margin-bottom:18px}
+h1{font-size:38px;letter-spacing:.08em;margin:0 0 14px;font-weight:700;line-height:1.3}
+h1 .h1-en{font-family:var(--mono);font-size:14px;font-weight:400;letter-spacing:.12em;color:var(--ink-3);margin-left:12px;vertical-align:middle}
+.intro{font-family:var(--sans);font-size:14px;line-height:2;color:var(--ink-2);max-width:760px;margin:0}
+.rule{height:1px;background:var(--line-2);margin:34px 0 26px;position:relative}
+.rule::after{content:'';position:absolute;left:0;top:-2px;width:54px;height:4px;background:var(--red)}
+.sec-title{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+.sec-title span{font-family:var(--sans);font-size:11px;letter-spacing:.28em;color:var(--ink-3)}
+.sec-title small{font-family:var(--mono);font-size:11px;color:var(--red)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px}
+.act{display:block;background:var(--paper-2);border:1px solid var(--line);box-shadow:var(--shadow);transition:transform .22s,box-shadow .22s,border-color .22s;overflow:hidden}
+.act:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift);border-color:var(--line-2)}
+.thumb{height:172px;background-color:var(--paper-3);background-size:cover;background-position:center;position:relative;border-bottom:1px solid var(--line)}
+.thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,20,14,0) 45%,rgba(26,20,14,.34) 100%)}
+.thumb .no{position:absolute;left:16px;top:14px;z-index:2;width:34px;height:34px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-family:var(--mono);font-size:12px;letter-spacing:.02em;box-shadow:0 2px 8px rgba(0,0,0,.22)}
+.act-body{padding:20px 22px 18px}
+.act-en{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--ink-3);text-transform:uppercase;margin-bottom:9px}
+.act h2{font-size:21px;letter-spacing:.05em;margin:0 0 10px;font-weight:700}
+.act p{font-family:var(--sans);font-size:12.5px;line-height:1.9;color:var(--ink-2);margin:0 0 16px;min-height:48px}
+.act-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:14px}
+.tag{font-family:var(--sans);font-size:11px;color:var(--green);background:rgba(78,107,74,.10);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.open{font-family:var(--sans);font-size:11.5px;letter-spacing:.08em;color:var(--red);white-space:nowrap}
+.act:hover .open{text-decoration:underline}
+
+/* ===== 维护说明 ===== */
+.howto{margin-top:40px;background:rgba(246,240,227,.6);border:1px solid var(--line);padding:0 20px}
+.howto summary{cursor:pointer;font-family:var(--sans);font-size:12px;letter-spacing:.1em;color:var(--ink-2);padding:16px 0;list-style:none}
+.howto summary::-webkit-details-marker{display:none}
+.howto summary::before{content:'＋';color:var(--red);margin-right:9px;font-size:14px}
+.howto[open] summary::before{content:'－'}
+.howto-body{border-top:1px solid var(--line);padding:6px 0 20px;font-family:var(--sans);font-size:12.5px;line-height:2;color:var(--ink-2)}
+.howto-body ol{margin:12px 0 0;padding-left:22px}
+.howto-body li{margin-bottom:8px}
+.howto-body code{font-family:var(--mono);font-size:11.5px;background:var(--paper-3);border:1px solid var(--line);padding:1px 5px;border-radius:2px;color:var(--red)}
+.tip{margin:16px 0 0;color:var(--ink-3)}
+footer{max-width:1180px;margin:0 auto;padding:0 28px 46px;font-family:var(--sans);font-size:11px;color:var(--ink-3);line-height:2}
+
+@media (max-width:640px){
+  .topbar-in{padding:0 16px;height:auto;min-height:58px;flex-wrap:wrap;gap:8px;padding-top:8px;padding-bottom:8px}
+  .wrap{padding:32px 16px 48px}
+  h1{font-size:29px}
+  h1 .h1-en{display:block;margin:8px 0 0}
+  .grid{grid-template-columns:1fr}
+  .thumb{height:150px}
+  footer{padding:0 16px 36px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="brand">
+      <span class="seal">阅</span>
+      <span>课本阅览室<small>COURSE COMPANION</small></span>
+    </div>
+    <a class="back" href="../index.html">← 返回课本阅览室</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="eyebrow">EXTRACURRICULAR · SECOND CLASSROOM</div>
+  <h1>英语第二课堂 <span class="h1-en">Activity Hub</span></h1>
+  <p class="intro">周五晚 7:00–8:40 · 汉水楼 410。这里汇总第二课堂的活动课件与配套资源，点击卡片会在新标签打开，关掉标签页即可回到本页；离线使用时同样可用。</p>
+
+  <div class="rule"></div>
+  <div class="sec-title"><span>活动课件 / ACTIVITIES</span><small id="count"></small></div>
+  <div class="grid" id="list"></div>
+
+  <details class="howto">
+    <summary>如何新增一个链接（点开看步骤）</summary>
+    <div class="howto-body">
+      <ol>
+        <li>把新活动的整个文件夹（含它自己的 <code>index.html</code> 和图片）拷到 <code>second-class/</code> 下，例如 <code>second-class/speech-club/</code>。</li>
+        <li>用记事本打开本文件 <code>second-class/index.html</code>，找到 <code>const ACTIVITIES = [ ... ]</code>，复制其中一整段 <code>{ ... },</code>，改掉 <code>no / title / en / desc / tag / url / thumb</code>；指向站外网页时 <code>url</code> 直接贴 <code>https://...</code>，并把 <code>external</code> 改成 <code>true</code>。</li>
+        <li>同步三份：源站 <code>教材配套学习网站/second-class/</code>、部署版 <code>课本阅览室_部署版/second-class/</code>、离线包 <code>课本阅览室_全12单元离线版.zip</code>。</li>
+        <li>在 <code>课本阅览室_部署版</code> 里执行 <code>git add -A &amp;&amp; git commit -m "add link" &amp;&amp; git push origin main</code>，约 1–2 分钟后线上生效，硬刷新 Ctrl+F5 清缓存。</li>
+      </ol>
+      <p class="tip">只在本机看效果：直接双击 <code>second-class/index.html</code> 即可，不需要联网，也不需要重新构建主站。</p>
+    </div>
+  </details>
+</main>
+
+<footer>英语第二课堂 · 活动资源汇总｜课本阅览室 COURSE COMPANION</footer>
+
+<script>
+/* ============================================================
+   活动链接清单 —— 以后新增活动，只需复制下面一段 { ... }, 改字段即可
+   url   : 站内相对路径（如 'speech-club/index.html'）或站外完整 https 地址
+   thumb : 卡片封面图，站内相对路径；留空则用纯色底
+   external : 站内填 false；站外链接填 true
+   ============================================================ */
+const ACTIVITIES = [
+  {
+    no:'01',
+    title:'看图说话 · Look & Say',
+    en:'Picture Talk · Week 10',
+    desc:'从「一眼定名」到「关系与故事」，六步把看见的东西说成英语；含翻卡练习、数量与位置表达、表情推断、关系叙事与当堂实操图。',
+    tag:'第 10 周 · 记忆锦囊',
+    url:'picture-talk/index.html',
+    thumb:'picture-talk/img/cover.jpg',
+    external:false
+  }
+];
+
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+document.getElementById('count').textContent = '共 ' + ACTIVITIES.length + ' 项';
+document.getElementById('list').innerHTML = ACTIVITIES.map(function(a){
+  var bg = a.thumb ? 'background-image:url(\'' + esc(a.thumb) + '\');' : '';
+  return '<a class="act" href="' + esc(a.url) + '" target="_blank" rel="noopener"' + (a.external?' data-ext="1"':'') + '>'
+    +   '<div class="thumb" style="' + bg + '"><span class="no">' + esc(a.no) + '</span></div>'
+    +   '<div class="act-body">'
+    +     '<div class="act-en">' + esc(a.en) + '</div>'
+    +     '<h2>' + esc(a.title) + '</h2>'
+    +     '<p>' + esc(a.desc) + '</p>'
+    +     '<div class="act-foot"><span class="tag">' + esc(a.tag) + '</span>'
+    +       '<span class="open">' + (a.external ? '访问链接' : '打开课件') + ' ↗</span></div>'
+    +   '</div>'
+    + '</a>';
+}).join('');
+</script>
+</body>
+</html>
