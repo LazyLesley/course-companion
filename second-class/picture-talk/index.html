@@ -213,6 +213,15 @@ nav#topNav .chip-end{background:rgba(255,255,255,.25);color:#fff}
 .btn-retry{background:var(--paper);color:var(--primary)}
 .btn-retry:hover{background:var(--paper-2)}
 .quiz-score{text-align:center;font-size:24px;font-weight:700;color:var(--green);margin-top:20px;display:none}
+.quiz-photos{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}
+.quiz-photos figure{margin:0;flex:1 1 150px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.quiz-photos img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:zoom-in}
+.quiz-photos figcaption{font-size:12px;color:var(--primary-light);padding:5px 7px;line-height:1.45}
+.q-type{display:inline-block;font-size:14px;font-weight:700;padding:1px 10px;border-radius:12px;margin-right:8px;vertical-align:2px;background:var(--primary-light);color:#fff;letter-spacing:1px}
+.q-type.multi{background:var(--accent)}
+.opt-confirm{margin-top:10px;padding:7px 22px;border-radius:18px;font-size:16px;font-weight:600;cursor:pointer;border:2px solid var(--accent);background:var(--paper);color:var(--accent);transition:all .2s}
+.opt-confirm:hover{background:var(--accent);color:#fff}
+.quiz-q.submitted .opt-confirm{display:none}
 
 /* ===== 总结页 ===== */
 .summary-page{padding:28px 36px 48px}
@@ -536,13 +545,18 @@ body.coverOn{background:#0A1626}
 <!-- 每个chip: class="chip" + 类型样式(pre/mid/post/sim) + data-page序号 -->
 <nav id="topNav">
   <span class="chip active" data-page="0">封面</span>
-  <span class="chip" data-page="1">① 一眼定名</span>
-  <span class="chip" data-page="2">② 数得清吗</span>
-  <span class="chip" data-page="3">③ 位置与颜色</span>
-  <span class="chip" data-page="4">④ 动作与身体</span>
-  <span class="chip" data-page="5">⑤ 表情与内心</span>
-  <span class="chip" data-page="6">⑥ 关系与故事</span>
-  <span class="chip chip-end" data-page="7">收口</span>
+  <span class="chip pre" data-page="1">前测</span>
+  <span class="chip" data-page="2">① 一眼定名</span>
+  <span class="chip" data-page="3">② 数得清吗</span>
+  <span class="chip mid" data-page="4">中测①</span>
+  <span class="chip" data-page="5">③ 位置与颜色</span>
+  <span class="chip" data-page="6">④ 动作与身体</span>
+  <span class="chip mid" data-page="7">中测②</span>
+  <span class="chip" data-page="8">⑤ 表情与内心</span>
+  <span class="chip" data-page="9">⑥ 关系与故事</span>
+  <span class="chip" data-page="10">⑦ 定向练习</span>
+  <span class="chip post" data-page="11">后测</span>
+  <span class="chip chip-end" data-page="12">收口</span>
 </nav>
 
 <!-- ===== 进度条 ===== -->
@@ -562,6 +576,63 @@ body.coverOn{background:#0A1626}
     <p class="intro">这一晚只做一件事：<b>看到什么，就说什么</b>。图来自电影、电视剧、演唱会、球赛的真实海报与剧照。<br>说对一句，就算赢。</p>
     <p class="hint">点击右下角箭头开始 · 点图片可放大细看</p>
   </div>
+</section>
+
+<!-- ===== 前测 ===== -->
+<section class="page" id="qPre">
+<div class="quiz-page" id="quizPre">
+  <h2 class="quiz-title">开课前，先测测你的「看图直觉」</h2>
+  <p class="quiz-hint">不计分、不排名、不留档。答完就过——今晚不考试，只摸底。</p>
+
+  <div class="quiz-q" id="qq_quizPre_0">
+    <p class="q-stem"><span class="q-type">单选题</span>1. 周五晚上，室友拍了张咖啡照片发朋友圈，配文只有一个 "Nice!"。你觉得最可能的原因是？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>照片拍得不好看，只能硬夸一句</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>想不出更好的说法，只好夸一句</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>英文里只有这一种夸法</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>她故意不想让人看懂</div>
+    </div>
+    <div class="feedback" id="fb_quizPre_0"></div>
+  </div>
+
+  <div class="quiz-q" id="qq_quizPre_1">
+    <p class="q-stem"><span class="q-type">单选题</span>2. 图里只有一个杯子。看到它的第一秒，你最先想到哪句话？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>These are cups.</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>There is three cups.</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>This is a cup.</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>想不出英文，脑子里只有中文</div>
+    </div>
+    <div class="feedback" id="fb_quizPre_1"></div>
+  </div>
+
+  <div class="quiz-q" id="qq_quizPre_2">
+    <p class="q-stem"><span class="q-type">单选题</span>3. 如果图里变成三个杯子，下面哪句最接近正确的英文？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>There are three cups.</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>This is three cup.</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>There have three cups.</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>There is three cups.</div>
+    </div>
+    <div class="feedback" id="fb_quizPre_2"></div>
+  </div>
+
+  <div class="quiz-q" id="qq_quizPre_3">
+    <p class="q-stem"><span class="q-type">单选题</span>4. 一只包放在椅子上。描述它的位置，哪句对？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>The bag is under the chair.</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>The bag is the chair.</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>The bag is on the chair.</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>不知道该用哪个介词</div>
+    </div>
+    <div class="feedback" id="fb_quizPre_3"></div>
+  </div>
+
+  <div class="quiz-actions">
+    <button class="btn-retry" onclick="retryQuiz('quizPre')">重做</button>
+  </div>
+  <span id="preScore" class="quiz-score"></span>
+</div>
 </section>
 
 <!-- ===== p1 板块① 命名（引入页） ===== -->
@@ -602,6 +673,58 @@ body.coverOn{background:#0A1626}
     <span class="fr">There are ______.</span>
     <span class="fr">There are some / dozens of / hundreds of ______.</span>
     <span class="do">当堂课练习：用上面的句型，说你手机里一张图里有多少东西。</span></div>
+</section>
+
+<!-- ===== 中测① ===== -->
+<section class="page" id="qMid1">
+<div class="quiz-page" id="quizMid1">
+  <h2 class="quiz-title">中测① · 前两级，过一遍</h2>
+  <p class="quiz-hint">三道题，看看"是什么 / 有几个 / 在干嘛"这三件事抓住没有</p>
+
+  <div class="quiz-photos">
+    <figure><img src="img/exam_A_q1_one_cup.jpg" alt="一只咖啡杯特写"><figcaption>题 1 · 一只橙红色咖啡杯特写</figcaption></figure>
+    <figure><img src="img/midA_01_three_cups_on_tray.jpg" alt="三只咖啡杯在托盘上"><figcaption>题 2 · 三只咖啡杯放在托盘上</figcaption></figure>
+    <figure><img src="img/exam_A_q3_taking_photo.jpg" alt="举手机拍食物"><figcaption>题 3 · 一双手举着手机拍桌上的菜</figcaption></figure>
+  </div>
+
+  <div class="quiz-q" id="qq_quizMid1_0">
+    <p class="q-stem"><span class="q-type">单选题</span>1. 图里只有一只咖啡杯。哪句最准确？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>These are cups of coffee.</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>This are a cup of coffee.</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>This is a cup of coffee.</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>There are a cup of coffee.</div>
+    </div>
+    <div class="feedback" id="fb_quizMid1_0"></div>
+  </div>
+
+  <div class="quiz-q" id="qq_quizMid1_1">
+    <p class="q-stem"><span class="q-type">单选题</span>2. 图里现在有三只咖啡杯，放在托盘上。哪句对？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>There are three cups on the tray.</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>There is three cups on the tray.</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>There are three cup on the tray.</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>This is three cups on the tray.</div>
+    </div>
+    <div class="feedback" id="fb_quizMid1_1"></div>
+  </div>
+
+  <div class="quiz-q" id="qq_quizMid1_2">
+    <p class="q-stem"><span class="q-type">单选题</span>3. 有人正举着手机，对着桌上的菜拍照。哪句对？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>Someone take a photo of the food.</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>Someone is taking a photo of the food.</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>Someone are taking a photo of the food.</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>Someone taking a photo of the food.</div>
+    </div>
+    <div class="feedback" id="fb_quizMid1_2"></div>
+  </div>
+
+  <div class="quiz-actions">
+    <button class="btn-retry" onclick="retryQuiz('quizMid1')">重做</button>
+  </div>
+  <span id="mid1Score" class="quiz-score"></span>
+</div>
 </section>
 
 <!-- ===== p3 板块③ 位置 + 颜色（一张图全覆盖） ===== -->
@@ -665,6 +788,70 @@ body.coverOn{background:#0A1626}
     <span class="fr">He is raising his right hand.</span>
     <span class="fr">He is hitting the wooden post with his hand.</span>
     <span class="do">当堂课练习：做或指一个动作，用上面的句型说出动作 + 身体部位（raise = 举，wave = 挥）。</span></div>
+</section>
+
+<!-- ===== 中测② ===== -->
+<section class="page" id="qMid2">
+<div class="quiz-page" id="quizMid2">
+  <h2 class="quiz-title">中测② · 位置与多人，专项过一遍</h2>
+  <p class="quiz-hint">四道题，第三级的两件事：东西在哪、谁跟谁在干嘛</p>
+
+  <div class="quiz-photos">
+    <figure><img src="img/exam_B_q1_bag_on_chair.jpg" alt="包放在椅子上"><figcaption>题 1 · 包在椅子上，看位置</figcaption></figure>
+    <figure><img src="img/exam_B_q2_two_with_guitar.jpg" alt="两人与一把吉他"><figcaption>题 2 · 两人与一把吉他</figcaption></figure>
+    <figure><img src="img/midA_03_waiter_serving_guest.jpg" alt="一人站立服务一人坐着"><figcaption>题 4 · 一人站立服务、一人坐着的参照图</figcaption></figure>
+  </div>
+
+  <div class="quiz-q" id="qq_quizMid2_0">
+    <p class="q-stem"><span class="q-type">单选题</span>1. 包放在椅子上，杯子放在托盘上。哪组句子对？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>The bag is under the chair. The cups are in the tray.</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>The bag is on the chair. The cups are on the tray.</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>The bag is in the chair. The cups are under the tray.</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>The bag is next to the chair. The cups are behind the tray.</div>
+    </div>
+    <div class="feedback" id="fb_quizMid2_0"></div>
+  </div>
+
+  <div class="quiz-q" id="qq_quizMid2_1">
+    <p class="q-stem"><span class="q-type">单选题</span>2. 一个人坐着弹吉他，另一个人在旁边看着她。哪句最准确？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>One person is playing the guitar, and the other person is looking at her.</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>One person play the guitar, and the other person look at her.</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>One person is play guitar, and the other person is look at her.</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>One person playing the guitar, the other person looking at her.</div>
+    </div>
+    <div class="feedback" id="fb_quizMid2_1"></div>
+  </div>
+
+  <div class="quiz-q" id="qq_quizMid2_2">
+    <p class="q-stem"><span class="q-type">单选题</span>3. 下面哪一句的介词用错了？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>The cups are on the tray.</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>The cookies are on the plates.</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>The coffee is in the cup.</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>The bag is in the chair.</div>
+    </div>
+    <div class="feedback" id="fb_quizMid2_2"></div>
+  </div>
+
+  <div class="quiz-q" id="qq_quizMid2_3">
+    <p class="q-stem"><span class="q-type multi">多选题</span>4. 看上面三张图，下面哪些句子是正确的？（多选，全对才得分）</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>A bag is on the chair.</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>One person is playing the guitar.</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>Two people is looking at a phone.</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>One man is standing and another man is sitting.</div>
+    </div>
+    <button type="button" class="opt-confirm">确认本题</button>
+    <div class="feedback" id="fb_quizMid2_3"></div>
+  </div>
+
+  <div class="quiz-actions">
+    <button class="btn-retry" onclick="retryQuiz('quizMid2')">重做</button>
+  </div>
+  <span id="mid2Score" class="quiz-score"></span>
+</div>
 </section>
 
 <!-- ===== p5 板块⑤ 表情 + 内心（4 张独立大特写） ===== -->
@@ -765,6 +952,97 @@ body.coverOn{background:#0A1626}
   </div>
 </section>
 
+<!-- ===== 后测 ===== -->
+<section class="page" id="qPost">
+<div class="quiz-page" id="quizPost">
+  <h2 class="quiz-title">后测 · 从头到尾，看你会不会"顺"</h2>
+  <p class="quiz-hint">七道题：前五道是三级，后两道是今晚新加的两层</p>
+
+  <div class="quiz-q" id="qq_quizPost_0">
+    <p class="q-stem"><span class="q-type">单选题</span>1. 托盘上有三只杯子，旁边的椅子上有一只包。哪句最完整、最准确？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>There are three cups on the tray, and a bag is on the chair.</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>There is three cups on the tray, and a bag on the chair.</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>Three cups on tray, bag on chair.</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>There are three cup on the tray, and a bag is on the chair.</div>
+    </div>
+    <div class="feedback" id="fb_quizPost_0"></div>
+  </div>
+
+  <div class="quiz-q" id="qq_quizPost_1">
+    <p class="q-stem"><span class="q-type">单选题</span>2. 你在食堂拍了张照片：三个菜在桌上，两个同学正在吃。想发朋友圈，哪句最合适？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>Three dish on table and two student eat.</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>There is three dishes and two students is eating.</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>Three dishes are on the table, and two students are eating.</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>Three dishes is on the table and two students eating.</div>
+    </div>
+    <div class="feedback" id="fb_quizPost_1"></div>
+  </div>
+
+  <div class="quiz-q" id="qq_quizPost_2">
+    <p class="q-stem"><span class="q-type multi">多选题</span>3. 关于"看图说话"的三步，下面哪些说法是对的？（多选，全对才得分）</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>先找主体：图里最主要的那个人或那个东西</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>先说位置：位置最重要，必须放在第一句</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>再看数量与动作：有几个、在做什么</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>最后看位置与关系：在哪、和谁在一起</div>
+    </div>
+    <button type="button" class="opt-confirm">确认本题</button>
+    <div class="feedback" id="fb_quizPost_2"></div>
+  </div>
+
+  <div class="quiz-q" id="qq_quizPost_3">
+    <p class="q-stem"><span class="q-type">单选题</span>4. 下面哪一句有语法错误？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>The cups are on the table.</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>A boy is taking a photo.</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>There are three students in the room.</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>Two people is looking at a phone.</div>
+    </div>
+    <div class="feedback" id="fb_quizPost_3"></div>
+  </div>
+
+  <div class="quiz-q" id="qq_quizPost_4">
+    <p class="q-stem"><span class="q-type">单选题</span>5. 下周社团招新，你要发一张"吉他社排练"的照片：四个人、两把吉他、一只包在椅子旁边。按今晚的顺序，你第一句该说什么？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>先说包在椅子旁边</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>先说图里有四个人在排练</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>先说吉他是棕色的</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>先说这张照片是晚上拍的</div>
+    </div>
+    <div class="feedback" id="fb_quizPost_4"></div>
+  </div>
+
+  <div class="quiz-q" id="qq_quizPost_5">
+    <p class="q-stem"><span class="q-type">单选题</span>6. 图里这个女生低着头、没笑、眼睛半闭。哪句"说得太满"，图里其实看不出来？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>She is not smiling.</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>Her eyes are half closed.</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>She is sad.</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>She looks tired.</div>
+    </div>
+    <div class="feedback" id="fb_quizPost_5"></div>
+  </div>
+
+  <div class="quiz-q" id="qq_quizPost_6">
+    <p class="q-stem"><span class="q-type">单选题</span>7. 托盘上有三只咖啡杯、画面明亮、整体偏暖、服务员在微笑。哪句最适合当"这张图在讲什么"的收尾？</p>
+    <div class="opts">
+      <div class="opt" data-idx="0"><span class="badge">A</span>There are three cups on the tray.</div>
+      <div class="opt" data-idx="1"><span class="badge">B</span>It feels warm and happy — it is about a good night with friends.</div>
+      <div class="opt" data-idx="2"><span class="badge">C</span>The picture is bright.</div>
+      <div class="opt" data-idx="3"><span class="badge">D</span>A waiter is smiling.</div>
+    </div>
+    <div class="feedback" id="fb_quizPost_6"></div>
+  </div>
+
+  <div class="quiz-actions">
+    <button class="btn-retry" onclick="retryQuiz('quizPost')">重做</button>
+  </div>
+  <span id="postScore" class="quiz-score"></span>
+</div>
+</section>
+
 <!-- ===== p8 总结（V4 模块卡片渐进揭示） ===== -->
 <section class="page" id="p8">
   <h2 class="teach-title">收口 · 看到什么，就说什么</h2>
@@ -840,8 +1118,8 @@ function getPageParam(k) {
 // ===== 配置块 =====
 // ⭐ 下列两个数组**必须按本课件实际页数改写**，此处仅为格式示例（示例 4 页）。
 //    PAGE_IDS 的每项 = 一个 <section id="...">；PAGE_LABELS 与之一一对应（导航芯片显示文字）。
-var PAGE_IDS = ['p0','p1','p2','p3','p4','p5','p6','p7','p8'];
-var PAGE_LABELS = ['封面','① 一眼定名','② 数得清吗','③ 位置与颜色','④ 动作与身体','⑤ 表情与内心','⑥ 关系与故事','⑦ 定向练习','收口'];
+var PAGE_IDS = ['p0','qPre','p1','p2','qMid1','p3','p4','qMid2','p5','p6','p7','qPost','p8'];
+var PAGE_LABELS = ['封面','前测','① 一眼定名','② 数得清吗','中测①','③ 位置与颜色','④ 动作与身体','中测②','⑤ 表情与内心','⑥ 关系与故事','⑦ 定向练习','后测','收口'];
 // 图片路径前缀 — 图片统一放在与 index.html 同级的 img 子目录
 var IMG_PREFIX = 'img/';
 
@@ -1185,8 +1463,162 @@ document.addEventListener('keydown', function(e) {
 });
 
 
-// ===== 本课件交互（轻互动，无测验、无打分） =====
-var QUIZZES = {};
+// ===== 四次测验：前测 / 中测① / 中测② / 后测 =====
+var QUIZZES = {
+  quizPre:{questions:[
+    {answer:1,explain:'单词都认识，说不出来——这是"看图的顺序"没建立，不是词汇问题。今晚补的就是这个顺序。'},
+    {answer:2,explain:'一个东西，用 This is + a/an + 名词。"These are" 是复数，"There is three cups" 数量对不上。'},
+    {answer:0,explain:'复数用 There are；"There have" 是中式英语，英语里"有"用 there be。'},
+    {answer:2,explain:'"放在上面"是 on，"在下面"是 under。位置词对了，句子就对了。'}
+  ]},
+  quizMid1:{questions:[
+    {answer:2,explain:'单数用 This is。This are 主谓不一致；There are a cup 数量矛盾。'},
+    {answer:0,explain:'复数必须 There are + 复数名词（cups 的 s 不能丢）。'},
+    {answer:1,explain:'"正在"用 be + doing：is taking。主语 someone 按单数处理，用 is。'}
+  ]},
+  quizMid2:{questions:[
+    {answer:1,explain:'包放在椅子上用 on the chair，杯子放在托盘上用 on the tray。in 是"装在里面"，under 是"在下面"。'},
+    {answer:0,explain:'两个动作都要带 be + ing；the other person 是单数，所以用 is looking。'},
+    {answer:3,explain:'包是放在椅子上、不是装在椅子里；in 表示被包在里面。应说 The bag is on the chair。'},
+    {multi:true,answer:[0,1,3],explain:'C 错在 Two people is——两个人要用 are。其余三句都能在上面三张图里找到依据。'}
+  ]},
+  quizPost:{questions:[
+    {answer:0,explain:'两句都对，且用 and 连接；B 的 There is 与复数矛盾，C 缺 be 动词，D 的 cup 漏了复数。'},
+    {answer:2,explain:'三个菜 → dishes（复数），两个同学 → are eating。数量、复数、be 动词三处都要对。'},
+    {multi:true,answer:[0,2,3],explain:'B 错：位置不是第一步，主体才是。顺序是主体 → 数量动作 → 位置关系。'},
+    {answer:3,explain:'Two people 是复数，必须用 are looking。这一条是基础英语里最高频的口误。'},
+    {answer:1,explain:'先找主体：图里最主要的是"四个人在排练"。位置、颜色、光线都是后面的补充信息。'},
+    {answer:2,explain:'低头、没笑、眼睛半闭，这些是事实；"她难过"是判断。要说得准确，用 She looks sad. 或 Maybe she is sad.——这就是换挡页那条规则。'},
+    {answer:1,explain:'前三句都只说了一层：A 是数量，C 是光线，D 是表情。收尾句要能收住全图——感觉加主题，才是第④层。'}
+  ]}
+};
+
+function isMultiQ(q){return !!(q&&q.multi&&Array.isArray(q.answer));}
+function sameIdxArr(a,b){
+  if(!Array.isArray(a)||!Array.isArray(b)||a.length!==b.length)return false;
+  for(var i=0;i<a.length;i++)if(a[i]!==b[i])return false;
+  return true;
+}
+function ascArr(a){return a.slice().sort(function(x,y){return x-y;});}
+function isCorrectChoice(q,chosen){
+  if(isMultiQ(q))return sameIdxArr(chosen,ascArr(q.answer));
+  return chosen===q.answer;
+}
+function idxInAnswer(q,j){return Array.isArray(q.answer)?q.answer.indexOf(j)>=0:j===q.answer;}
+function idxInChosen(c,j){return Array.isArray(c)?c.indexOf(j)>=0:c===j;}
+function quizScoreId(containerId){
+  var s=String(containerId).replace(/^quiz/,'');
+  return s.charAt(0).toLowerCase()+s.slice(1)+'Score';
+}
+
+function initQuiz(quizId){
+  var container=document.getElementById(quizId);
+  if(!container)return;
+  if(container._initialized)return;
+  container._initialized=true;
+  container._questions=QUIZZES[quizId].questions;
+  container._chosen=container._questions.map(function(q){return isMultiQ(q)?null:-1;});
+  container._picked=container._questions.map(function(q){return isMultiQ(q)?[]:null;});
+  container.querySelectorAll('.quiz-q').forEach(function(qq,qi){
+    var q=container._questions[qi];
+    var opts=qq.querySelectorAll('.opt');
+    if(isMultiQ(q)){
+      opts.forEach(function(opt){
+        opt.addEventListener('click',function(){
+          if(container._submitted)return;
+          var idx=parseInt(this.getAttribute('data-idx'));
+          var pos=container._picked[qi].indexOf(idx);
+          if(pos>=0){container._picked[qi].splice(pos,1);this.classList.remove('selected');}
+          else{container._picked[qi].push(idx);this.classList.add('selected');}
+        });
+      });
+      var btn=qq.querySelector('.opt-confirm');
+      if(btn)btn.addEventListener('click',function(){
+        if(container._submitted)return;
+        if(container._picked[qi].length===0)return;
+        container._chosen[qi]=ascArr(container._picked[qi]);
+        qq.classList.add('answered');
+        showFeedback(quizId,qi);updateQuizScore(quizId);
+      });
+    }else{
+      opts.forEach(function(opt){
+        opt.addEventListener('click',function(){
+          if(container._submitted)return;
+          var idx=parseInt(this.getAttribute('data-idx'));
+          container._chosen[qi]=idx;
+          opts.forEach(function(o){o.classList.remove('selected');});
+          this.classList.add('selected');
+          qq.classList.add('answered');
+          showFeedback(quizId,qi);updateQuizScore(quizId);
+        });
+      });
+    }
+  });
+}
+
+function showFeedback(quizId,qi){
+  var container=document.getElementById(quizId);
+  var q=container._questions[qi];
+  var c=container._chosen[qi];
+  var qq=document.getElementById('qq_'+quizId+'_'+qi);
+  var fb=document.getElementById('fb_'+quizId+'_'+qi);
+  if(!qq||!fb)return;
+  if(isMultiQ(q)){
+    if(!Array.isArray(c)||c.length===0)return;
+  }else{
+    if(c<0)return;
+  }
+  var isCorrect=isCorrectChoice(q,c);
+  fb.innerHTML='<span class="fb-icon">'+(isCorrect?'✓':'✗')+'</span>'+(isCorrect?'回答正确！':'回答有误。')+q.explain;
+  fb.className='feedback show '+(isCorrect?'correct-fb':'wrong-fb');
+  var opts=qq.querySelectorAll('.opt');
+  opts.forEach(function(o,j){
+    if(idxInAnswer(q,j))o.classList.add('correct');
+    if(!isCorrect&&idxInChosen(c,j)&&!idxInAnswer(q,j))o.classList.add('wrong');
+  });
+  qq.querySelectorAll('.opt').forEach(function(o){o.style.pointerEvents='none';});
+}
+
+function updateQuizScore(quizId){
+  var container=document.getElementById(quizId);
+  var total=container._questions.length;
+  var done=0,score=0;
+  container._questions.forEach(function(q,i){
+    var c=container._chosen[i];
+    var answered=isMultiQ(q)?(Array.isArray(c)&&c.length>0):c>=0;
+    if(answered){done++;if(isCorrectChoice(q,c))score++;}
+  });
+  var scoreEl=document.getElementById(quizScoreId(quizId));
+  if(scoreEl){
+    scoreEl.style.display='block';
+    if(done===total){
+      scoreEl.innerHTML='得分：'+score+'/'+total+' &nbsp;&nbsp;'+
+        (score===total?'🌟 全部正确，可以下班了！':score>=total*0.6?'👍 不错，明天还能更好':'💪 回去把三级再说一遍就稳了');
+    }else{
+      scoreEl.textContent='已答：'+done+'/'+total+' 正确：'+score;
+    }
+  }
+  try{localStorage.setItem('xmn_'+quizId,JSON.stringify({score:score,total:total,done:done}));}catch(e){}
+}
+
+function retryQuiz(quizId){
+  var container=document.getElementById(quizId);
+  if(!container)return;
+  container._chosen=container._questions.map(function(q){return isMultiQ(q)?null:-1;});
+  container._picked=container._questions.map(function(q){return isMultiQ(q)?[]:null;});
+  container.querySelectorAll('.quiz-q').forEach(function(qq){
+    qq.classList.remove('answered');
+    qq.querySelectorAll('.opt').forEach(function(o){
+      o.classList.remove('selected','correct','wrong');
+      o.style.pointerEvents='auto';
+    });
+  });
+  container.querySelectorAll('.feedback').forEach(function(fb){fb.className='feedback';fb.innerHTML='';});
+  var el=document.getElementById(quizScoreId(quizId));
+  if(el)el.style.display='none';
+}
+
+Object.keys(QUIZZES).forEach(function(k){initQuiz(k);});
 
 function flip(el){ el.classList.toggle('on'); }
 
