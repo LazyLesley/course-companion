@@ -75,6 +75,17 @@ h1 .h1-en{font-family:var(--mono);font-size:14px;font-weight:400;letter-spacing:
 .tip{margin:16px 0 0;color:var(--ink-3)}
 footer{max-width:1180px;margin:0 auto;padding:0 28px 46px;font-family:var(--sans);font-size:11px;color:var(--ink-3);line-height:2}
 
+/* ===== 站内课件查看层：不离开本页、不跳站外 ===== */
+.viewer{position:fixed;inset:0;z-index:999;background:var(--paper);display:flex;flex-direction:column}
+.viewer[hidden]{display:none}
+.viewer-bar{flex:0 0 46px;display:flex;align-items:center;gap:14px;padding:0 18px;background:var(--paper-2);border-bottom:1px solid var(--line-2);font-family:var(--sans)}
+.viewer-back{cursor:pointer;background:transparent;border:1px solid var(--line-2);border-radius:2px;padding:6px 12px;font-family:var(--sans);font-size:12px;color:var(--red);white-space:nowrap;transition:.2s}
+.viewer-back:hover{background:var(--red);color:#fff;border-color:var(--red)}
+.viewer-title{font-family:var(--serif);font-size:14px;font-weight:700;letter-spacing:.06em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.viewer-new{margin-left:auto;font-family:var(--sans);font-size:11.5px;color:var(--ink-3);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.viewer-new:hover{color:var(--red)}
+.viewer iframe{flex:1 1 auto;width:100%;border:0;background:#fff}
+
 @media (max-width:640px){
   .topbar-in{padding:0 16px;height:auto;min-height:58px;flex-wrap:wrap;gap:8px;padding-top:8px;padding-bottom:8px}
   .wrap{padding:32px 16px 48px}
@@ -83,6 +94,9 @@ footer{max-width:1180px;margin:0 auto;padding:0 28px 46px;font-family:var(--sans
   .grid{grid-template-columns:1fr}
   .thumb{height:150px}
   footer{padding:0 16px 36px}
+  .viewer-bar{gap:8px;padding:0 12px}
+  .viewer-title{font-size:12px}
+  .viewer-new{font-size:10.5px}
 }
 </style>
 </head>
@@ -101,7 +115,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 28px 46px;font-family:var(--sans
 <main class="wrap">
   <div class="eyebrow">EXTRACURRICULAR · SECOND CLASSROOM</div>
   <h1>英语第二课堂 <span class="h1-en">Activity Hub</span></h1>
-  <p class="intro">周五晚 7:00–8:40 · 汉水楼 410。这里汇总第二课堂的活动课件与配套资源，点击卡片会在新标签打开，关掉标签页即可回到本页；离线使用时同样可用。</p>
+  <p class="intro">周五晚 7:00–8:40 · 汉水楼 410。这里汇总第二课堂的活动课件与配套资源，点击卡片直接在<b>本页内</b>打开课件，点顶部「返回第二课堂」即可回到列表；课件文件都在本站内，不需要跳到别的网站，离线使用时同样可用。</p>
 
   <div class="rule"></div>
   <div class="sec-title"><span>活动课件 / ACTIVITIES</span><small id="count"></small></div>
@@ -122,6 +136,15 @@ footer{max-width:1180px;margin:0 auto;padding:0 28px 46px;font-family:var(--sans
 </main>
 
 <footer>英语第二课堂 · 活动资源汇总｜课本阅览室 COURSE COMPANION</footer>
+
+<div class="viewer" id="viewer" hidden>
+  <div class="viewer-bar">
+    <button class="viewer-back" id="viewerClose" type="button">← 返回第二课堂</button>
+    <span class="viewer-title" id="viewerTitle"></span>
+    <a class="viewer-new" id="viewerNew" href="#" target="_blank" rel="noopener">没显示？在新标签打开 ↗</a>
+  </div>
+  <iframe id="viewerFrame" src="about:blank" title="第二课堂课件"></iframe>
+</div>
 
 <script>
 /* ============================================================
@@ -146,19 +169,50 @@ const ACTIVITIES = [
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
 document.getElementById('count').textContent = '共 ' + ACTIVITIES.length + ' 项';
-document.getElementById('list').innerHTML = ACTIVITIES.map(function(a){
+document.getElementById('list').innerHTML = ACTIVITIES.map(function(a,i){
   var bg = a.thumb ? 'background-image:url(\'' + esc(a.thumb) + '\');' : '';
-  return '<a class="act" href="' + esc(a.url) + '" target="_blank" rel="noopener"' + (a.external?' data-ext="1"':'') + '>'
+  return '<a class="act" data-i="' + i + '" href="' + esc(a.url) + '"' + (a.external?' target="_blank" rel="noopener"':'') + '>'
     +   '<div class="thumb" style="' + bg + '"><span class="no">' + esc(a.no) + '</span></div>'
     +   '<div class="act-body">'
     +     '<div class="act-en">' + esc(a.en) + '</div>'
     +     '<h2>' + esc(a.title) + '</h2>'
     +     '<p>' + esc(a.desc) + '</p>'
     +     '<div class="act-foot"><span class="tag">' + esc(a.tag) + '</span>'
-    +       '<span class="open">' + (a.external ? '访问链接' : '打开课件') + ' ↗</span></div>'
+    +       '<span class="open">' + (a.external ? '访问链接 ↗' : '在本页打开 ▸') + '</span></div>'
     +   '</div>'
     + '</a>';
 }).join('');
+
+/* 站内课件：直接在本页的全屏层里打开，不跳站外、不新开标签 */
+var viewer = document.getElementById('viewer');
+var frame  = document.getElementById('viewerFrame');
+
+function openViewer(a){
+  var url = String(a.url || '');
+  document.getElementById('viewerTitle').textContent = a.title;
+  document.getElementById('viewerNew').href = url;
+  frame.src = url;
+  viewer.hidden = false;
+  document.body.style.overflow = 'hidden';
+  document.getElementById('viewerClose').focus();
+}
+function closeViewer(){
+  viewer.hidden = true;
+  frame.src = 'about:blank';
+  document.body.style.overflow = '';
+}
+document.getElementById('viewerClose').addEventListener('click', closeViewer);
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape' && !viewer.hidden) closeViewer();
+});
+
+document.getElementById('list').addEventListener('click', function(e){
+  var el = e.target;
+  while(el && el !== this && !(el.classList && el.classList.contains('act'))) el = el.parentNode;
+  if(!el || el === this) return;
+  var a = ACTIVITIES[Number(el.getAttribute('data-i'))];
+  if(a && !a.external){ e.preventDefault(); openViewer(a); }
+});
 </script>
 </body>
 </html>
