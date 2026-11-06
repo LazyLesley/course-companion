@@ -61,6 +61,12 @@ h1 .h1-en{font-family:var(--mono);font-size:14px;font-weight:400;letter-spacing:
 .tag{font-family:var(--sans);font-size:11px;color:var(--green);background:rgba(78,107,74,.10);padding:4px 10px;border-radius:999px;white-space:nowrap}
 .open{font-family:var(--sans);font-size:11.5px;letter-spacing:.08em;color:var(--red);white-space:nowrap}
 .act:hover .open{text-decoration:underline}
+/* 站外链接：无封面时显示域名，与站内课件卡片区分 */
+.thumb.ext{background:linear-gradient(135deg,var(--paper-3),#DCD0B6);display:grid;place-items:center}
+.thumb.ext::after{display:none}
+.site-mark{position:relative;z-index:2;font-family:var(--mono);font-size:16px;letter-spacing:.08em;color:var(--ink-2);text-align:center;padding:0 20px;word-break:break-all;line-height:1.5}
+.ext-badge{position:absolute;right:14px;top:14px;z-index:2;font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;color:var(--red);background:var(--paper-2);border:1px solid var(--red);border-radius:2px;padding:3px 8px}
+@media (max-width:640px){ .site-mark{font-size:14px} }
 
 /* ===== 维护说明 ===== */
 .howto{margin-top:40px;background:rgba(246,240,227,.6);border:1px solid var(--line);padding:0 20px}
@@ -115,10 +121,10 @@ footer{max-width:1180px;margin:0 auto;padding:0 28px 46px;font-family:var(--sans
 <main class="wrap">
   <div class="eyebrow">EXTRACURRICULAR · SECOND CLASSROOM</div>
   <h1>英语第二课堂 <span class="h1-en">Activity Hub</span></h1>
-  <p class="intro">周五晚 7:00–8:40 · 汉水楼 410。这里汇总第二课堂的活动课件与配套资源，点击卡片直接在<b>本页内</b>打开课件，点顶部「返回第二课堂」即可回到列表；课件文件都在本站内，不需要跳到别的网站，离线使用时同样可用。</p>
+  <p class="intro">周五晚 7:00–8:40 · 汉水楼 410。这里汇总第二课堂的活动课件与配套资源：本站课件点击卡片直接在<b>本页内</b>打开，点「返回第二课堂」回到列表，文件都在本站、断网也能用；标有「外部资源 ↗」的是站外网站，会在新标签打开并需要联网。</p>
 
   <div class="rule"></div>
-  <div class="sec-title"><span>活动课件 / ACTIVITIES</span><small id="count"></small></div>
+  <div class="sec-title"><span>活动课件与外部资源 / ACTIVITIES &amp; LINKS</span><small id="count"></small></div>
   <div class="grid" id="list"></div>
 
   <details class="howto">
@@ -126,11 +132,11 @@ footer{max-width:1180px;margin:0 auto;padding:0 28px 46px;font-family:var(--sans
     <div class="howto-body">
       <ol>
         <li>把新活动的整个文件夹（含它自己的 <code>index.html</code> 和图片）拷到 <code>second-class/</code> 下，例如 <code>second-class/speech-club/</code>。</li>
-        <li>用记事本打开本文件 <code>second-class/index.html</code>，找到 <code>const ACTIVITIES = [ ... ]</code>，复制其中一整段 <code>{ ... },</code>，改掉 <code>no / title / en / desc / tag / url / thumb</code>；指向站外网页时 <code>url</code> 直接贴 <code>https://...</code>，并把 <code>external</code> 改成 <code>true</code>。</li>
-        <li>同步三份：源站 <code>教材配套学习网站/second-class/</code>、部署版 <code>课本阅览室_部署版/second-class/</code>、离线包 <code>课本阅览室_全12单元离线版.zip</code>。</li>
+        <li>用记事本打开本文件 <code>second-class/index.html</code>，找到 <code>const ACTIVITIES = [ ... ]</code>，复制其中一整段 <code>{ ... },</code>，改掉 <code>no / title / en / desc / tag / url / thumb</code>；指向站外网页时 <code>url</code> 直接贴 <code>https://...</code>，并把 <code>external</code> 改成 <code>true</code>、<code>thumb</code> 留空，卡片会自动显示站点域名。</li>
+        <li>同步四处：源站 <code>教材配套学习网站/second-class/</code>、部署版 <code>课本阅览室_部署版/second-class/</code>、以及两个离线包（<code>全12单元离线版.zip</code>、<code>U1-U4离线版.zip</code>）里的 <code>second-class/index.html</code>。</li>
         <li>在 <code>课本阅览室_部署版</code> 里执行 <code>git add -A &amp;&amp; git commit -m "add link" &amp;&amp; git push origin main</code>，约 1–2 分钟后线上生效，硬刷新 Ctrl+F5 清缓存。</li>
       </ol>
-      <p class="tip">只在本机看效果：直接双击 <code>second-class/index.html</code> 即可，不需要联网，也不需要重新构建主站。</p>
+      <p class="tip">只在本机看效果：直接双击 <code>second-class/index.html</code> 即可；站内课件不需要联网，也不需要重新构建主站。标「外部资源 ↗」的链接需要联网才能打开，离线时点开会显示无法访问，属正常现象。</p>
     </div>
   </details>
 </main>
@@ -163,16 +169,72 @@ const ACTIVITIES = [
     url:'picture-talk/index.html',
     thumb:'picture-talk/img/cover.jpg',
     external:false
+  },
+  {
+    no:'02',
+    title:'中国日报双语 · 双语阅读',
+    en:'China Daily · Bilingual',
+    desc:'中国日报网双语栏目：时事双语新闻、热词与表达，适合课后延伸阅读，也为看图说话积累话题词汇。',
+    tag:'外部资源 · 双语阅读',
+    url:'https://language.chinadaily.com.cn/',
+    thumb:'',
+    external:true
+  },
+  {
+    no:'03',
+    title:'21世纪英文报',
+    en:'21st Century · Campus English',
+    desc:'面向大中学生的英文报刊网站，校园话题与简易新闻，可直接拿来当课堂讨论与口语复述素材。',
+    tag:'外部资源 · 报刊阅读',
+    url:'https://www.i21st.cn/',
+    thumb:'',
+    external:true
+  },
+  {
+    no:'04',
+    title:'外研社 · 教材与赛事',
+    en:'FLTRP · Resources & Competitions',
+    desc:'外语教学与研究出版社官网，教材配套资源与各类英语赛事信息入口；具体赛项通知以官网发布为准。',
+    tag:'外部资源 · 备赛信息',
+    url:'https://www.fltrp.com/',
+    thumb:'',
+    external:true
+  },
+  {
+    no:'05',
+    title:'中国大学MOOC · 英语课程',
+    en:'icourse163 · English MOOCs',
+    desc:'国内高校开放课程平台，可检索英语听说、演讲与跨文化类慕课，作为第二课堂的自主学习补充。',
+    tag:'外部资源 · 慕课',
+    url:'https://www.icourse163.org/',
+    thumb:'',
+    external:true
+  },
+  {
+    no:'06',
+    title:'TED · 演讲与表达',
+    en:'TED · Ideas Worth Spreading',
+    desc:'英文短演讲视频库，适合练听力、模仿语速与结构；国内访问偶有缓慢，打不开时可跳过这一项。',
+    tag:'外部资源 · 演讲视频',
+    url:'https://www.ted.com/',
+    thumb:'',
+    external:true
   }
 ];
 
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
-document.getElementById('count').textContent = '共 ' + ACTIVITIES.length + ' 项';
+var extCount = ACTIVITIES.filter(function(a){ return !!a.external; }).length;
+document.getElementById('count').textContent = '共 ' + ACTIVITIES.length + ' 项 · 站内 ' + (ACTIVITIES.length - extCount) + ' / 外部 ' + extCount;
 document.getElementById('list').innerHTML = ACTIVITIES.map(function(a,i){
+  var ext = !!a.external;
+  var noThumbExt = ext && !a.thumb;
+  var host = ext ? String(a.url||'').replace(/^https?:\/\//i,'').replace(/^www\./i,'').split('/')[0] : '';
   var bg = a.thumb ? 'background-image:url(\'' + esc(a.thumb) + '\');' : '';
-  return '<a class="act" data-i="' + i + '" href="' + esc(a.url) + '"' + (a.external?' target="_blank" rel="noopener"':'') + '>'
-    +   '<div class="thumb" style="' + bg + '"><span class="no">' + esc(a.no) + '</span></div>'
+  return '<a class="act" data-i="' + i + '" href="' + esc(a.url) + '"' + (ext?' target="_blank" rel="noopener"':'') + '>'
+    +   '<div class="' + (noThumbExt?'thumb ext':'thumb') + '" style="' + bg + '">'
+    +     (noThumbExt ? '<span class="site-mark">' + esc(host) + '</span><span class="ext-badge">外部资源 ↗</span>' : '')
+    +     '<span class="no">' + esc(a.no) + '</span></div>'
     +   '<div class="act-body">'
     +     '<div class="act-en">' + esc(a.en) + '</div>'
     +     '<h2>' + esc(a.title) + '</h2>'
