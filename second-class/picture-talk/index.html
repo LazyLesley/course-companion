@@ -537,9 +537,43 @@ body.coverOn{background:#0A1626}
 .picard .cap, .emo-card .cap{display:none}
 .picard.on .cap, .emo-card.on .cap{display:block}
 
+
+/* RUNTIME_FALLBACK_V1 · 仅在老内核(html.legacy)生效 */
+.legacy-tip{display:none}
+html.legacy .legacy-tip{display:block;background:#FFF4F1;border:2px solid #C0453B;border-radius:8px;padding:12px 18px;margin:0 0 18px;font:16px/1.8 "Microsoft YaHei",sans-serif;color:#4e1a06}
+html.legacy,html.legacy body{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;display:block!important;position:static!important}
+html.legacy body{background:#F5F8FC!important;color:#1B2A38!important;font-size:19px!important;padding:0 0 60px!important;font-family:"Microsoft YaHei",sans-serif!important}
+html.legacy #pageContainer{overflow:visible!important;height:auto!important;max-height:none!important;display:block!important}
+html.legacy .page{display:block!important;overflow:visible!important;height:auto!important;max-height:none!important;padding:22px 26px 34px!important;margin:0 auto 18px!important;max-width:1100px;border-bottom:3px solid #CFDCEA!important;background:#fff!important;color:#1B2A38!important}
+html.legacy #p0{background:#1A3A5C!important;color:#fff!important}
+html.legacy #p0 *{color:#fff!important}
+html.legacy #topNav,html.legacy #progressWrap,html.legacy #navBtns,html.legacy #revealHint,html.legacy #imgLightbox,html.legacy .quiz-actions,html.legacy .opt-confirm,html.legacy .btnrow,html.legacy .btn-retry{display:none!important}
+html.legacy .reveal-hidden,html.legacy .reveal-hidden *{opacity:1!important;visibility:visible!important;transform:none!important;animation:none!important;max-height:none!important}
+html.legacy .reveal-fold{max-height:none!important;overflow:visible!important}
+html.legacy .reveal-curtain::before,html.legacy .reveal-curtain::after{display:none!important}
+html.legacy .picard .ans,html.legacy .emo-card .ans,html.legacy .sum-card .body,html.legacy .picard .cap,html.legacy .emo-card .cap{display:block!important}
+html.legacy .grid2,html.legacy .grid3,html.legacy .grid4,html.legacy .sum-grid,html.legacy .prac,html.legacy .opts,html.legacy .tags,html.legacy .cover-page{display:block!important}
+html.legacy img{max-width:100%!important;height:auto!important}
 </style>
+<script id="runtime-fallback">
+/* RUNTIME_FALLBACK_V1 · 运行环境自检（ES5，IE 也能执行） */
+(function(){
+  var bad = false;
+  try {
+    bad = !!document.documentMode
+       || !window.CSS || !CSS.supports || !CSS.supports('display','grid')
+       || typeof NodeList.prototype.forEach !== 'function'
+       || typeof window.URLSearchParams !== 'function'
+       || typeof Element.prototype.closest !== 'function'
+       || typeof Element.prototype.remove !== 'function';
+  } catch (e) { bad = true; }
+  if (bad) { document.documentElement.className += ' legacy'; }
+})();
+</script>
 </head>
 <body>
+<div class="legacy-tip">当前浏览器内核较旧（360 兼容模式 / IE），互动功能无法运行，已自动切换为<b>静态阅读版</b>：13 页内容、四组测验题目与图片全部可见，但翻页、翻卡、自动判分不可用。要恢复完整互动，请把 360 切到「极速模式」，或改用 Chrome / Edge 打开本课件。四组测验的参考答案见第二课堂首页的「教师参考答案」入口。</div>
+
 
 <!-- ===== 顶部导航 ===== -->
 <!-- 每个chip: class="chip" + 类型样式(pre/mid/post/sim) + data-page序号 -->

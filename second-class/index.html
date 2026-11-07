@@ -104,6 +104,10 @@ footer{max-width:1180px;margin:0 auto;padding:0 28px 46px;font-family:var(--sans
   .viewer-title{font-size:12px}
   .viewer-new{font-size:10.5px}
 }
+
+/* RUNTIME_FALLBACK_V1 · 老内核提示 */
+.env-tip{display:none}
+html.legacy .env-tip{display:block;margin:24px 0 0;padding:13px 18px;background:#FFF4F1;border:1px solid rgba(192,69,59,.55);border-left:4px solid #C0453B;font-family:var(--sans);font-size:13px;line-height:1.9;color:#4e1a06}
 </style>
 </head>
 <body>
@@ -123,6 +127,8 @@ footer{max-width:1180px;margin:0 auto;padding:0 28px 46px;font-family:var(--sans
   <h1>英语第二课堂 <span class="h1-en">Activity Hub</span></h1>
   <p class="intro">周五晚 7:00–8:40 · 汉水楼 410。这里汇总第二课堂的活动课件与配套资源：本站课件点击卡片直接在<b>本页内</b>打开，点「返回第二课堂」回到列表，文件都在本站、断网也能用；标有「外部资源 ↗」的是站外网站，会在新标签打开并需要联网。</p>
 
+  <div class="env-tip"><b>检测到旧浏览器内核（360 兼容模式 / IE）</b>：互动课件已自动切换为静态阅读版，题目和图片都能看，但翻页与自动判分不可用。建议把 360 地址栏右侧切到「极速模式」，或改用 Chrome / Edge，即可恢复完整互动。</div>
+
   <div class="rule"></div>
   <div class="sec-title"><span>活动课件与外部资源 / ACTIVITIES &amp; LINKS</span><small id="count"></small></div>
   <div class="grid" id="list"></div>
@@ -135,6 +141,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 28px 46px;font-family:var(--sans
         <li>用记事本打开本文件 <code>second-class/index.html</code>，找到 <code>const ACTIVITIES = [ ... ]</code>，复制其中一整段 <code>{ ... },</code>，改掉 <code>no / title / en / desc / tag / url / thumb</code>；指向站外网页时 <code>url</code> 直接贴 <code>https://...</code>，并把 <code>external</code> 改成 <code>true</code>、<code>thumb</code> 留空，卡片会自动显示站点域名。</li>
         <li>同步四处：源站 <code>教材配套学习网站/second-class/</code>、部署版 <code>课本阅览室_部署版/second-class/</code>、以及两个离线包（<code>全12单元离线版.zip</code>、<code>U1-U4离线版.zip</code>）里的 <code>second-class/index.html</code>。</li>
         <li>在 <code>课本阅览室_部署版</code> 里执行 <code>git add -A &amp;&amp; git commit -m "add link" &amp;&amp; git push origin main</code>，约 1–2 分钟后线上生效，硬刷新 Ctrl+F5 清缓存。</li>
+        <li><b>运行环境</b>：互动课件需要现代浏览器内核（Chrome / Edge / 360 极速模式 / Firefox / Safari），<b>不支持 IE 内核与 360 兼容模式</b>；不需要联网、服务器、插件或安装。老内核会自动切换为静态阅读版，不会出现空白页。</li>
       </ol>
       <p class="tip">只在本机看效果：直接双击 <code>second-class/index.html</code> 即可；站内课件不需要联网，也不需要重新构建主站。标「外部资源 ↗」的链接需要联网才能打开，离线时点开会显示无法访问，属正常现象。</p>
     </div>
@@ -153,6 +160,17 @@ footer{max-width:1180px;margin:0 auto;padding:0 28px 46px;font-family:var(--sans
 </div>
 
 <script>
+/* RUNTIME_FALLBACK_V1 · 与课件一致的运行环境自检 */
+var IS_LEGACY = (function(){
+  try {
+    return !!document.documentMode || !window.CSS || !CSS.supports
+        || !CSS.supports('display','grid')
+        || typeof NodeList.prototype.forEach !== 'function'
+        || typeof window.URLSearchParams !== 'function';
+  } catch (e) { return true; }
+})();
+if (IS_LEGACY) { document.documentElement.className += ' legacy'; }
+
 /* ============================================================
    活动链接清单 —— 以后新增活动，只需复制下面一段 { ... }, 改字段即可
    url   : 站内相对路径（如 'speech-club/index.html'）或站外完整 https 地址
@@ -251,6 +269,7 @@ var frame  = document.getElementById('viewerFrame');
 
 function openViewer(a){
   var url = String(a.url || '');
+  if (IS_LEGACY && url.indexOf('picture-talk/index.html') >= 0) url = 'picture-talk/compat.html';
   document.getElementById('viewerTitle').textContent = a.title;
   document.getElementById('viewerNew').href = url;
   frame.src = url;
