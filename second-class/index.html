@@ -3,35 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>大学英语1第二课堂</title>
+<title>第二课堂上</title>
 <style>
 :root{
-  --paper:#EFE7D4; --paper-2:#F6F0E3; --paper-3:#E5DAC3;
-  --ink:#2A2521; --ink-2:#5C5349; --ink-3:#8A7F71;
-  --red:#A2382C; --red-soft:rgba(162,56,44,.12);
-  --gold:#B08A3E; --green:#4E6B4A;
-  --line:rgba(42,37,33,.16); --line-2:rgba(42,37,33,.28);
-  --shadow:0 1px 2px rgba(42,37,33,.08), 0 8px 24px -14px rgba(42,37,33,.28);
-  --shadow-lift:0 2px 4px rgba(42,37,33,.10), 0 16px 36px -18px rgba(42,37,33,.34);
-  --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC","SimSun",serif;
-  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-  --mono:"SF Mono","Menlo","Consolas",monospace;
+--paper:#FBFAF6;--paper-2:#F1F6F3;--paper-3:#E9F0EC;--paper-dark:#D8E4DE;
+--ink:#2F3B36;--ink-2:#5E6E67;--ink-3:#7E9189;
+--red:#C4715B;--red-soft:rgba(196,113,91,.12);
+--blue:#4F7A69;--blue-soft:rgba(79,122,105,.10);
+--gold:#9FB8AF;--green:#4F7A69;--green-soft:rgba(79,122,105,.12);
+--line:rgba(47,59,54,.13);--line-2:#D8E4DE;
+--shadow:0 1px 2px rgba(47,59,54,.06),0 8px 24px -16px rgba(47,59,54,.22);
+--shadow-lift:0 2px 4px rgba(47,59,54,.08),0 16px 36px -20px rgba(47,59,54,.26);
+--serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+--sans:"PingFang SC","Microsoft YaHei",sans-serif;
+--mono:"SF Mono","Menlo","Consolas",monospace;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{
   margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
-  background-image:radial-gradient(rgba(42,37,33,.045) 1px,transparent 1px);
-  background-size:5px 5px;
+  
+  
 }
 a{color:inherit;text-decoration:none}
 
-/* ===== 顶栏（与课本阅览室保持一致） ===== */
-.topbar{position:sticky;top:0;z-index:60;background:rgba(239,231,212,.94);backdrop-filter:blur(10px) saturate(1.2);border-bottom:1px solid var(--line-2)}
+.topbar{position:sticky;top:0;z-index:60;background:rgba(251,250,246,.94);backdrop-filter:blur(10px) saturate(1.2);border-bottom:1px solid var(--line-2)}
 .topbar-in{max-width:1180px;margin:0 auto;padding:0 28px;height:62px;display:flex;align-items:center;gap:18px}
 .brand{font-weight:700;font-size:17px;letter-spacing:.14em;display:flex;align-items:center;gap:10px;white-space:nowrap}
-.brand .seal{width:27px;height:27px;border:1.6px solid var(--red);color:var(--red);display:grid;place-items:center;font-size:12px;border-radius:3px;transform:rotate(-4deg)}
-.brand small{font-family:var(--sans);font-size:10px;letter-spacing:.22em;color:var(--ink-3);display:block;margin-top:-3px}
+
+
 .back{margin-left:auto;font-family:var(--sans);font-size:12px;letter-spacing:.06em;color:var(--red);border:1px solid var(--line-2);border-radius:2px;padding:7px 13px;background:var(--paper-2);white-space:nowrap;transition:.2s}
 .back:hover{background:var(--red);color:var(--paper-2);border-color:var(--red)}
 
@@ -42,7 +42,7 @@ h1{font-size:38px;letter-spacing:.08em;margin:0 0 14px;font-weight:700;line-heig
 h1 .h1-en{font-family:var(--mono);font-size:14px;font-weight:400;letter-spacing:.12em;color:var(--ink-3);margin-left:12px;vertical-align:middle}
 .intro{font-family:var(--sans);font-size:14px;line-height:2;color:var(--ink-2);max-width:760px;margin:0}
 .rule{height:1px;background:var(--line-2);margin:34px 0 26px;position:relative}
-.rule::after{content:'';position:absolute;left:0;top:-2px;width:54px;height:4px;background:var(--red)}
+.rule::after{content:'';position:absolute;left:0;top:-4px;width:8px;height:8px;border-radius:50%;background:#C4715B}
 .sec-title{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
 .sec-title span{font-family:var(--sans);font-size:11px;letter-spacing:.28em;color:var(--ink-3)}
 .sec-title small{font-family:var(--mono);font-size:11px;color:var(--red)}
@@ -58,7 +58,7 @@ h1 .h1-en{font-family:var(--mono);font-size:14px;font-weight:400;letter-spacing:
 .act h2{font-size:21px;letter-spacing:.05em;margin:0 0 10px;font-weight:700}
 .act p{font-family:var(--sans);font-size:12.5px;line-height:1.9;color:var(--ink-2);margin:0 0 16px;min-height:48px}
 .act-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:14px}
-.tag{font-family:var(--sans);font-size:11px;color:var(--green);background:rgba(78,107,74,.10);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.tag{font-family:var(--sans);font-size:11px;color:var(--green);background:rgba(79,122,105,.10);padding:4px 10px;border-radius:999px;white-space:nowrap}
 .open{font-family:var(--sans);font-size:11.5px;letter-spacing:.08em;color:var(--red);white-space:nowrap}
 .act:hover .open{text-decoration:underline}
 /* 站外链接：无封面时显示域名，与站内课件卡片区分 */
@@ -96,7 +96,10 @@ footer{max-width:1180px;margin:0 auto;padding:0 28px 46px;font-family:var(--sans
 
 /* RUNTIME_FALLBACK_V1 · 老内核提示 */
 .env-tip{display:none}
-html.legacy .env-tip{display:block;margin:24px 0 0;padding:13px 18px;background:#FFF4F1;border:1px solid rgba(192,69,59,.55);border-left:4px solid #C0453B;font-family:var(--sans);font-size:13px;line-height:1.9;color:#4e1a06}
+html.legacy .env-tip{display:block;margin:24px 0 0;padding:13px 18px;background:#F1F6F3;border:1px solid #D8E4DE;border-left:4px solid #C4715B;font-family:var(--sans);font-size:13px;line-height:1.9;color:#2F3B36}
+
+.brand::before{content:"";width:8px;height:8px;border-radius:50%;background:#C4715B;flex:none}
+html.legacy body,html.legacy .side-card,html.legacy .act{background:#FBFAF6;color:#2F3B36}
 </style>
 </head>
 <body>
@@ -104,33 +107,32 @@ html.legacy .env-tip{display:block;margin:24px 0 0;padding:13px 18px;background:
 <header class="topbar">
   <div class="topbar-in">
     <div class="brand">
-      <span class="seal">阅</span>
-      <span>课本阅览室<small>COURSE COMPANION</small></span>
+      
+      <span>理理脑丝的教学园地</span>
     </div>
-    <a class="back" href="../index.html">← 返回课本阅览室</a>
+    <a class="back" href="../index.html">← 园地</a>
   </div>
 </header>
 
 <main class="wrap">
-  <div class="eyebrow">EXTRACURRICULAR · SECOND CLASSROOM</div>
-  <h1>大学英语1第二课堂 <span class="h1-en">Activity Hub</span></h1>
-      <p class="intro">周五晚 7:00–8:40 · 汉水楼 410。点卡片在本页内打开。站外链接见首页「外部学习资源」。</p>
+  <h1>第二课堂上 </h1>
+      <p class="intro">周五晚 7:00–8:40 · 汉水楼 410 · 外链见首页。</p>
 
   <div class="env-tip">旧内核：已切为静态阅读版；切「极速模式」可恢复互动。</div>
 
   <div class="rule"></div>
-  <div class="sec-title"><span>活动课件 / ACTIVITIES</span><small id="count"></small></div>
+  <div class="sec-title"><span>活动课件</span><small id="count"></small></div>
   <div class="grid" id="list"></div>
 
 </main>
 
-<footer>大学英语1第二课堂</footer>
+<footer>第二课堂上</footer>
 
 <div class="viewer" id="viewer" hidden>
   <div class="viewer-bar">
-    <button class="viewer-back" id="viewerClose" type="button">← 返回第二课堂</button>
+    <button class="viewer-back" id="viewerClose" type="button">← 返回</button>
     <span class="viewer-title" id="viewerTitle"></span>
-    <a class="viewer-new" id="viewerNew" href="#" target="_blank" rel="noopener">没显示？在新标签打开 ↗</a>
+    <a class="viewer-new" id="viewerNew" href="#" target="_blank" rel="noopener">新标签打开 ↗</a>
   </div>
   <iframe id="viewerFrame" src="about:blank" title="第二课堂课件"></iframe>
 </div>

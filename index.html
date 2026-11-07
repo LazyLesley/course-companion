@@ -6,31 +6,20 @@
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>课本阅览室 · 教材配套学习网站</title>
+<title>理理脑丝的教学园地</title>
 <style>
-/* ========== 设计令牌：沿用参考页「复古档案 · 纸墨手稿」========== */
 :root{
-  --paper:#EFE7D4;
-  --paper-2:#F6F0E3;
-  --paper-3:#E5DAC3;
-  --paper-dark:#D9CBAE;
-  --ink:#2A2521;
-  --ink-2:#5C5349;
-  --ink-3:#8A7F71;
-  --red:#A2382C;
-  --red-soft:rgba(162,56,44,.12);
-  --blue:#33506B;
-  --blue-soft:rgba(51,80,107,.10);
-  --gold:#B08A3E;
-  --green:#4E6B4A;
-  --green-soft:rgba(78,107,74,.12);
-  --line:rgba(42,37,33,.16);
-  --line-2:rgba(42,37,33,.28);
-  --shadow:0 1px 2px rgba(42,37,33,.08), 0 8px 24px -14px rgba(42,37,33,.28);
-  --shadow-lift:0 2px 4px rgba(42,37,33,.10), 0 16px 36px -18px rgba(42,37,33,.34);
-  --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC","SimSun",serif;
-  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-  --mono:"SF Mono","Menlo","Consolas",monospace;
+--paper:#FBFAF6;--paper-2:#F1F6F3;--paper-3:#E9F0EC;--paper-dark:#D8E4DE;
+--ink:#2F3B36;--ink-2:#5E6E67;--ink-3:#7E9189;
+--red:#C4715B;--red-soft:rgba(196,113,91,.12);
+--blue:#4F7A69;--blue-soft:rgba(79,122,105,.10);
+--gold:#9FB8AF;--green:#4F7A69;--green-soft:rgba(79,122,105,.12);
+--line:rgba(47,59,54,.13);--line-2:#D8E4DE;
+--shadow:0 1px 2px rgba(47,59,54,.06),0 8px 24px -16px rgba(47,59,54,.22);
+--shadow-lift:0 2px 4px rgba(47,59,54,.08),0 16px 36px -20px rgba(47,59,54,.26);
+--serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+--sans:"PingFang SC","Microsoft YaHei",sans-serif;
+--mono:"SF Mono","Menlo","Consolas",monospace;
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -39,15 +28,7 @@ body{
   font-family:var(--serif);font-size:16px;line-height:1.85;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-  background-image:
-    radial-gradient(circle at 16% 10%,rgba(176,138,62,.055) 0%,transparent 42%),
-    radial-gradient(circle at 84% 76%,rgba(162,56,44,.04) 0%,transparent 46%),
-    repeating-linear-gradient(0deg,rgba(42,37,33,.016) 0 1px,transparent 1px 3px),
-    repeating-linear-gradient(90deg,rgba(42,37,33,.010) 0 1px,transparent 1px 4px);
-  mix-blend-mode:multiply;
-}
+
 button,input{font-family:inherit;font-size:inherit;}
 button{cursor:pointer;}
 a{color:var(--red);text-decoration:none;}
@@ -58,10 +39,9 @@ p:last-child{margin-bottom:0;}
 .sans{font-family:var(--sans);}
 .z{position:relative;z-index:2;}
 
-/* ========== 顶部档案索引条 ========== */
 .topbar{
   position:sticky;top:0;z-index:60;
-  background:rgba(239,231,212,.94);backdrop-filter:blur(10px) saturate(1.2);
+  background:rgba(251,250,246,.94);backdrop-filter:blur(10px) saturate(1.2);
   border-bottom:1px solid var(--line-2);
 }
 .topbar-in{
@@ -69,11 +49,8 @@ p:last-child{margin-bottom:0;}
   display:flex;align-items:center;gap:18px;
 }
 .brand{font-weight:700;font-size:17px;letter-spacing:.14em;display:flex;align-items:center;gap:10px;white-space:nowrap;}
-.brand .seal{
-  width:27px;height:27px;border:1.6px solid var(--red);color:var(--red);
-  display:grid;place-items:center;font-size:12px;border-radius:3px;transform:rotate(-4deg);
-}
-.brand small{font-family:var(--sans);font-size:10px;letter-spacing:.22em;color:var(--ink-3);display:block;margin-top:-3px;}
+
+
 .term-switch{display:flex;gap:6px;margin-left:14px;}
 .term-switch button{
   font-family:var(--sans);font-size:12.5px;color:var(--ink-2);background:transparent;
@@ -95,7 +72,7 @@ p:last-child{margin-bottom:0;}
 .side-title{font-family:var(--sans);font-size:10.5px;letter-spacing:.3em;color:var(--ink-3);margin-bottom:14px;}
 .side-term{
   font-size:14px;font-weight:700;letter-spacing:.12em;padding:8px 10px;margin:0 -4px 8px;
-  border-left:3px solid var(--gold);background:rgba(176,138,62,.08);display:flex;justify-content:space-between;align-items:center;
+  border-left:3px solid var(--gold);background:rgba(159,184,175,.12);display:flex;justify-content:space-between;align-items:center;
 }
 .side-term span{font-family:var(--mono);font-size:10px;color:var(--ink-3);font-weight:400;}
 .unit-list{list-style:none;margin:0 0 18px;padding:0;}
@@ -383,6 +360,9 @@ table.word-table{width:100%;border-collapse:collapse;font-size:14px;}
 
 .mini-note{font-family:var(--sans);font-size:11.5px;color:var(--ink-3);margin-top:10px;line-height:1.8;}
 @media(max-width:640px){.para{padding-left:0;}.para .pno{position:static;display:inline-block;margin-right:6px;}}
+
+.brand::before{content:"";width:8px;height:8px;border-radius:50%;background:#C4715B;flex:none}
+html.legacy body,html.legacy .side-card,html.legacy .act{background:#FBFAF6;color:#2F3B36}
 </style>
 <!-- 各单元数据按学期-单元拆分到独立文件，加载顺序无关，互不干扰；加载后由下方主脚本并入 UDATA / CONTENT 并置 ready -->
 <!-- 单元数据 u2 已内联（源文件 units/u2.js 保留作编辑参考） -->
@@ -1849,11 +1829,11 @@ window.__PENDING_UNITS.push({"id":"s2-u6","readyNo":6,"data":{"WORDS":[{"w":"deg
 <header class="topbar">
   <div class="topbar-in">
     <div class="brand">
-      <span class="seal">阅</span>
-      <span>课本阅览室<small>COURSE COMPANION</small></span>
+      
+      <span>理理脑丝的教学园地</span>
     </div>
     <div class="term-switch" id="termSwitch"></div>
-    <a class="top-link" href="second-class/index.html" title="大学英语1第二课堂">第二课堂</a>
+    <a class="top-link" href="second-class/index.html" title="第二课堂上">第二课堂</a>
     <div class="top-meta" id="topMeta"></div>
   </div>
 </header>
@@ -1864,25 +1844,20 @@ window.__PENDING_UNITS.push({"id":"s2-u6","readyNo":6,"data":{"WORDS":[{"w":"deg
 </div>
 
 <!-- EXT_LINKS_START -->
-<section id="ext-links" style="max-width:1080px;margin:30px auto 0;padding:0 28px;font-family:'Songti SC','STSong','Noto Serif SC','SimSun',serif;color:#2A2521">
+<section id="ext-links" style="max-width:1180px;margin:30px auto 0;padding:0 28px;font-family:'Songti SC','STSong','SimSun',serif;color:#2F3B36">
   <style>
-    #ext-links .extl-row{display:block;text-decoration:none;color:#2A2521;border:1px solid rgba(42,37,33,.22);border-left:4px solid #A2382C;background:#F6F0E3;padding:11px 16px;margin-bottom:8px;font-size:15px}
-    #ext-links .extl-row:hover{border-color:#A2382C;background:#FFFBF2}
-    #ext-links .extl-no{font:700 11px 'Microsoft YaHei',sans-serif;color:#A2382C;margin-right:12px}
-    #ext-links .extl-tag{font:11px 'Microsoft YaHei',sans-serif;color:#8A7F71;margin-left:10px}
-    #ext-links .extl-go{float:right;color:#A2382C}
+    #ext-links .extl-row{display:block;text-decoration:none;color:#2F3B36;border-bottom:1px solid #E4EDE8;padding:10px 2px;font-size:15px}
+    #ext-links .extl-row:hover{color:#C4715B}
+    #ext-links .extl-no{font:700 11px 'Microsoft YaHei',sans-serif;color:#9FB8AF;margin-right:14px}
+    #ext-links .extl-go{float:right;color:#4F7A69}
   </style>
-  <div style="border-bottom:1px solid rgba(42,37,33,.28);padding-bottom:8px;margin-bottom:14px;font-size:15px;font-weight:700;letter-spacing:.08em">外部学习资源</div>
-    <a class="extl-row" href="https://vep.fltrp.com/categorys/41708882166419456" target="_blank" rel="noopener noreferrer"><span class="extl-no">01</span><span class="extl-t">外研社杯赛</span><span class="extl-tag">外研社 VEP</span><span class="extl-go">↗</span></a>
-    <a class="extl-row" href="https://www.bilibili.com/video/BV1MN4dewEQZ/" target="_blank" rel="noopener noreferrer"><span class="extl-no">02</span><span class="extl-t">英语播客 · 初级磨耳朵合集</span><span class="extl-tag">B 站 · 26 集</span><span class="extl-go">↗</span></a>
+  <div style="font-size:11px;letter-spacing:.1em;color:#7E9189;margin-bottom:6px">外部学习资源</div>
+    <a class="extl-row" href="https://vep.fltrp.com/categorys/41708882166419456" target="_blank" rel="noopener noreferrer"><span class="extl-no">01</span><span class="extl-t">外研社杯赛</span><span class="extl-go">↗</span></a>
+    <a class="extl-row" href="https://www.bilibili.com/video/BV1MN4dewEQZ/" target="_blank" rel="noopener noreferrer"><span class="extl-no">02</span><span class="extl-t">英语播客 · 初级磨耳朵合集</span><span class="extl-go">↗</span></a>
 </section>
 <!-- EXT_LINKS_END -->
 
-<div class="foot">
-  教材配套学习网站 · 内容依据「理理2026」教材配套课件单元定义组织，层级为「学期 → 单元 → 模块」。
-  上学期 Unit 1–6 与下学期 Unit 1–6 已接入真实内容（Vocabulary / Reading / Chatting / The Pride of China 四模块）。听力音频、词表与脚本均取自对应单元课件。
-  <br><span class="ver">本地预览 · 含 U1–U6 + S2U1–U6 · 2026-11-06</span>
-</div>
+<div class="foot">理理脑丝的教学园地 · 又得闲了，顺手连一片</div>
 
 <script>
 /* =========================================================
